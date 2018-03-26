@@ -1,0 +1,44 @@
+@import  play.filters.csrf.CSRF._
+
+@(user: Form[users.UserInformation])(implicit messages: MessagesProvider,request: RequestHeader)
+@import helper._
+
+
+@main("Play Assignment 1") {
+<div class="container bg-dark p-4">
+    <div class="card">
+        <div class="card-body">
+            <form action="@routes.HomeController.addUser()" method="POST" class="p-4 xs-1 bg-secondary text-white">
+                @CSRF.formField
+                <p class="h4 text-center py-2">Registration</p>
+                <label for="firstName" class="font-weight-light"><i>FirstName:</i></label><br>
+                <input type="text" id="firstName" class="form-control" name="Name"/><br>
+                <label for="middleName" class="font-weight-light"><i>MiddleName:</i></label><br>
+                <input type="text" id="middleName" class="form-control" name="MiddleName"/><br>
+                <label for="lastName" class="font-weight-light"><i>LastName:</i></label><br>
+                <input type="text" id="lastName" class="form-control" name="LastName"/><br>
+                <label for="userName" class="font-weight-light"><i>userName:</i></label><br>
+                <input type="text" id="userName" class="form-control" name="UserName"/><br>
+                <label for="password" class="font-weight-light"><i>Password</i></label>
+                <input type="password"  id="password" class="form-control" name="Password"/><br>
+                <label for="confirmPassword" class="font-weight-light"><i>Confirm Password</i></label>
+                <input type="password" id="confirmPassword" class="form-control" name="ConfirmPassword"/><br>
+                <label for="mobileNumber" class="font-weight-light"><i>MobileNumber</i></label>
+                <input type="text" id="mobileNumber" class="form-control" name="MobileNumber"/><br>
+                @user("MobileNumber").error.map{error => @error.message}
+                <label class="font-weight-light"><i>Gender</i></label><br>
+                <select name="Gender">
+                    <option>Male</option>
+                    <option>Female</option>
+                </select><br><br>
+                <label for="age" class="font-weight-light"> <i>Age </i></label>
+                <input type="number" id = "age" class = "form-control" name="Age"/><br>
+                <label for="hobbies" class="font-weight-light"><i> Hobbies</i></label>
+                <input type="text" id ="hobbies" class="form-control" name="Hobbies"/><br>
+                <button  class="btn btn-primary dropdown-toggle" type="submit">SignUp!!!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+}

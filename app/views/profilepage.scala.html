@@ -1,0 +1,8 @@
+@()(implicit flash:Flash, request: RequestHeader)
+
+@flash.get("Success").getOrElse("Welcome!")
+<p>@request.session.get("UserName")</p>
+
+
+@main("Welcome to Knoldus") {
+}
